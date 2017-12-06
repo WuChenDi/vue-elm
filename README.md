@@ -14,17 +14,9 @@ __注：此项目纯属个人瞎搞，正常下单请选择饿了么官方客户
 
 vue2 + vuex + vue-router + webpack + ES6/7 + fetch + styl + flex + svg
 
+## 项目运行
 
-
-# 说明
-
->  如果对您有帮助，您可以点右上角 "Star" 支持一下 谢谢！ ^_^
-
-# wcd_elm
-
-> A Vue.js project
-
-## Build Setup
+#### 注意：node的版本(安装稳定版本，推荐8.14，我的版本是8.2.1)
 
 ``` bash
 # install dependencies
@@ -39,5 +31,18 @@ npm run build
 # build for production and view the bundle analyzer report
 npm run build --report
 ```
+
+## 另外
+
+# 说明
+
+>  如果对您有帮助，您可以点右上角 "Star" 支持一下 谢谢！ ^_^
+
+# wcd_elm
+
+> A Vue.js project
+
+## Build Setup
+
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
