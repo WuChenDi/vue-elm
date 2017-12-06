@@ -32,17 +32,12 @@ npm run build
 npm run build --report
 ```
 
-## 另外
-
 # 说明
 
 >  如果对您有帮助，您可以点右上角 "Star" 支持一下 谢谢！ ^_^
 
-# wcd_elm
+>  或者您可以 "follow" 一下，一定会随着自己的技术提升项目和开源更多的有趣的项目
 
-> A Vue.js project
+>  特别感谢亲朋好友在百忙之中抽出时间和我一起完成了这个项目，辛苦了🌹
 
-## Build Setup
-
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+>  如有问题请直接在 Issues 中提，或者您发现问题并有非常好的解决方案，欢迎 PR 👍
