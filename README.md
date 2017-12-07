@@ -8,7 +8,7 @@
 另外，项目参考了[Vue官网](https://vuejs.org/), elm视频和[bailicangdu](https://github.com/bailicangdu/vue2-elm)
 
 
-__注：此项目纯属个人瞎搞，正常下单请选择饿了么官方客户端。__
+__注：此项目纯属个人瞎搞用来学习vue的用途，正常下单请选择饿了么官方客户端。__
 
 ## 技术栈
 
