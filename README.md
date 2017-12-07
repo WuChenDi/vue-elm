@@ -16,7 +16,7 @@ vue2 + vuex + vue-router + webpack + ES6/7 + fetch + styl + flex + svg
 
 ## 项目运行
 
-#### 注意：node的版本(安装稳定版本，推荐8.14，我的版本是8.2.1)
+#### 注意：node的版本(安装稳定版本，推荐8.14，当时我自己开发版本是8.2.1)
 
 ``` bash
 # install dependencies
