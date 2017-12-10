@@ -114,5 +114,7 @@ export default {
       vertial-align: top
       font-size: 10px
     .icon-keyboard_arrow_right
+      margin-left: 2px
+      line-height: 24px
       font-size: 10px
 </style>

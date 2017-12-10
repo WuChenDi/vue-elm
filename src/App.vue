@@ -29,16 +29,16 @@ export default {
   },
   created() {
     // this.$http.get('data.json').then((response) => {
-    //   // success callback
+    //   success callback
     //   var res = response.body;
-    //   // console.log(res);
-    //   // console.log(response);
+    //   console.log(res);
+    //   console.log(response);
     //   if (res.errno === ERR_OK) {
     //     this.seller = res.data;
     //     console.log(this.seller);
     //   }
     // }, (response) => {
-    //   // error callback
+    //   error callback
     // });
     this.$http.get('/api/seller').then((response) => {
       response = response.body;

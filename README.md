@@ -16,11 +16,13 @@ vue2 + vuex + vue-router + webpack + ES6/7 + fetch + styl + flex + svg
 
 ## 项目运行
 
+通过npm安装本地服务第三方依赖模块(需要已安装Node.js)
+
 #### 注意：node的版本(安装稳定版本，推荐8.14，当时我自己开发版本是8.2.1)
 
 ``` bash
 # install dependencies
-npm install
+npm install 或 cnpm install(个人比较喜欢使用后者，下载依赖模块速度较快)
 
 # serve with hot reload at localhost:8080
 npm run dev
