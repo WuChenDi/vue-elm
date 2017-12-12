@@ -22,8 +22,10 @@
       </div>
     </div>
   </div>
-  <div class="bullentin-wrapper">
-
+  <div class="bulletin-wrapper">
+    <span class="bulletin-title"></span>
+    <span class="bulletin-text">{{seller.bulletin}}</span>
+    <i class="icon-keyboard_arrow_right"></i>
   </div>
 </div>
 </template>
@@ -42,7 +44,7 @@ export default {
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-@import "../../common/stylus/mixin";
+@import "../../common/stylus/mixin.styl";
 
  .header
   color: #fff
@@ -116,5 +118,23 @@ export default {
     .icon-keyboard_arrow_right
       margin-left: 2px
       line-height: 24px
+      font-size: 10px
+  .bulletin-wrapper
+    height: 28px
+    line-height: 28px
+    padding: 0 22px 0 12px
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
+    font-size: 0
+    .bulletin-title
+      display: inline-block
+      width: 22px
+      height: 12px
+      bg-image('bulletin')
+      background-size: 22px 12px
+      background-repeat: no-repeat
+    .bulletin-text
+      margin: 0 4px
       font-size: 10px
 </style>

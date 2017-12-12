@@ -1,7 +1,7 @@
 <template>
 <div id="app">
   <v-header :seller="seller"></v-header>
-  <div class="tab">
+  <div class="tab border-1px">
     <div class="tab_item">
       <router-link to="/goods">商品</router-link>
     </div>
@@ -54,8 +54,8 @@ export default {
 };
 </script>
 
-<style lang="stylus" rel="stylesheet/stylus">
-  @import "./common/stylus/mixin.styl"
+<style lang="stylus">
+  @import "./common/stylus/mixin.styl";
 
     .tab
       display: flex
