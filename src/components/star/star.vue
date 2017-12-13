@@ -1,48 +1,48 @@
 <template>
-  <div id="app">
-    <div class="star" :class="starType">
-      <span v-for="itemClass in itemClasses" :class="itemClass" class="star-item" track-by="$index"></span>
-    </div>
-  </div>
+<div class="star" :class="starType">
+  <span v-for="itemClass in itemClasses" :class="itemClass" class="star-item" track-by="$index"></span>
+</div>
 </template>
 
 <script type="text/ecmascript-6">
-  const LENGTH = 5;   // 星星数量
-  const CLS_ON = 'on';  //  星星class on
-  const CLS_HALF = 'half';
-  const CLS_OFF = 'off';  //  星星class off
+const LENGTH = 5; // 星星数量
+const CLS_ON = 'on'; //  星星class on
+const CLS_HALF = 'half';
+const CLS_OFF = 'off'; //  星星class off
 
-  export default {
-    props: {
-      size: {
-        type: Number
-      },
-      score: {
-        type: Number
-      }
+export default {
+  props: {
+    size: {
+      // 尺寸 48 36 24
+      type: Number
     },
-    cpmputed: {
-      starType() {
-        return 'star-' + this.size;
-      },
-      itemClasses() {
-        let result = [];
-        let score = Math.floor(this.score * 2) / 2; //  向下取0.5倍数
-        let hasDecimal = score % 1 !== 0; //  判断是否有小数，半星
-        let integer = Math.floor(score);  //  整数，全星
-        for (let i = 0; i < integer; i++) {
-          result.push(CLS_ON);
-        }
-        if (hasDecimal) {
-          result.push(CLS_HALF);
-        }
-        while (result.length < LENGTH) {
-          result.push(CLS_OFF);
-        }
-        return result;
-      }
+    score: {
+      // 分数
+      type: Number
     }
-  };
+  },
+  computed: { // 计算属性
+    starType() {
+      return 'star-' + this.size;
+    },
+    itemClasses() {
+      let result = [];
+      let score = Math.floor(this.score * 2) / 2; //  向下取0.5倍数
+      let hasDecimal = score % 1 !== 0; //  判断是否有小数，半星
+      let integer = Math.floor(score); //  整数，全星
+      for (let i = 0; i < integer; i++) {
+        result.push(CLS_ON);
+      }
+      if (hasDecimal) {
+        result.push(CLS_HALF);
+      }
+      while (result.length < LENGTH) {
+        result.push(CLS_OFF);
+      }
+      return result;
+    }
+  }
+};
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
