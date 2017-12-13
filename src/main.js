@@ -4,11 +4,11 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import VueResouce from 'vue-resource';
 import App from './App';
-import goods from './components/goods/goods';
-import ratings from './components/ratings/ratings';
-import seller from './components/seller/seller';
+import goods from 'components/goods/goods';
+import ratings from 'components/ratings/ratings';
+import seller from 'components/seller/seller';
 
-// import './common/stylus/index.styl';
+// import 'common/stylus/index.styl';
 
 Vue.use(VueRouter);
 Vue.use(VueResouce);
@@ -44,4 +44,5 @@ new Vue({
   }
 });
 
+// 自动加载goods
 router.push('/goods');

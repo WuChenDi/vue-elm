@@ -17,9 +17,9 @@
 </template>
 
 <script type="text/ecmascript-6">
-import header from './components/header/header.vue';
+import header from 'components/header/header.vue';
 
-const ERR_OK = 0;
+const ERR_OK = 0; // 设置状态码
 
 export default {
   data() {
@@ -28,6 +28,7 @@ export default {
     };
   },
   created() {
+    // wuchendi 最新版本路由写法
     // this.$http.get('data.json').then((response) => {
     //   success callback
     //   var res = response.body;
@@ -41,11 +42,15 @@ export default {
     //   error callback
     // });
     this.$http.get('/api/seller').then((response) => {
+      // success callback 成功回调
       response = response.body;
       if (response.errno === ERR_OK) {
         this.seller = response.data;
         console.log(this.seller);
       }
+    }, (response) => {
+      // error callback 失败回调
+      console.log('请求失败!!!');
     });
   },
   components: {
@@ -54,7 +59,8 @@ export default {
 };
 </script>
 
-<style lang="stylus">
+<style lang="stylus" rel="stylesheet/stylus">
+  @import "./common/stylus/base.styl";
   @import "./common/stylus/mixin.styl";
 
     .tab
@@ -69,7 +75,7 @@ export default {
         & > a
           display:block
           font-size: 14px
-          color: rgb(77,85,93)
+          color: rgb(77, 85, 93)
           &.active
-            color: rgb(240,20,20)
+            color: rgb(240, 20, 20)
 </style>
