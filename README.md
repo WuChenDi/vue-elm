@@ -10,9 +10,15 @@
 
 __注：此项目纯属个人瞎搞，正常下单请选择饿了么官方客户端。__
 
-## 技术栈
-
-vue2 + vuex + vue-router + webpack + ES6/7 + fetch + styl + flex + svg
+### 项目技术架构
+***
+*  vue-cli
+*  vue
+*  vue-resource
+*  vue-router
+*  vue-infinite-scroll
+*  stylus
+*  webpack
 
 ## 项目运行
 
