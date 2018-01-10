@@ -3,7 +3,7 @@
 [vuejs](https://vuejs.org/)初学（WuChenDi）
 
 自己利用业余时间来做，由于视频是1.0的版本，有很多东西需要转换成2.0，现在很多东西只是单单实现功能，以后再慢慢优化，并增加详细的注释。
-项目从零布局到现在完成header组件。（暂时停更）
+项目从零布局到现在完成header组件。（停更）
 
 另外，项目参考了[Vue官网](https://vuejs.org/), elm视频和[bailicangdu](https://github.com/bailicangdu/vue2-elm)
 
