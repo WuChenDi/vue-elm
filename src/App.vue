@@ -1,25 +1,25 @@
 <template>
-<div id="app">
-  <v-header :seller="seller"></v-header>
-  <div class="tab border-1px">
-    <div class="tab_item">
-      <router-link to="/goods">商品</router-link>
+  <div id="app">
+    <v-header :seller="seller"></v-header>
+    <div class="tab border-1px">
+      <div class="tab-item">
+        <router-link to="/goods">商品</router-link>
+      </div>
+      <div class="tab-item">
+        <router-link to="/ratings">评论</router-link>
+      </div>
+      <div class="tab-item">
+        <router-link to="/seller">商家</router-link>
+      </div>
     </div>
-    <div class="tab_item">
-      <router-link to="/ratings">评论</router-link>
-    </div>
-    <div class="tab_item">
-      <router-link to="/seller">商家</router-link>
-    </div>
+    <router-view></router-view>
   </div>
-  <router-view></router-view>
-</div>
 </template>
 
-<script type="text/ecmascript-6">
-import header from 'components/header/header.vue';
+<script>
+import header from "./components/header/header";
 
-const ERR_OK = 0; // 设置状态码
+const ERR_OK = 0;
 
 export default {
   data() {
@@ -28,54 +28,47 @@ export default {
     };
   },
   created() {
-    // wuchendi 最新版本路由写法
-    // this.$http.get('data.json').then((response) => {
-    //   success callback
-    //   var res = response.body;
-    //   console.log(res);
-    //   console.log(response);
-    //   if (res.errno === ERR_OK) {
-    //     this.seller = res.data;
-    //     console.log(this.seller);
-    //   }
-    // }, (response) => {
-    //   error callback
-    // });
-    this.$http.get('/api/seller').then((response) => {
-      // success callback 成功回调
-      response = response.body;
-      if (response.errno === ERR_OK) {
-        this.seller = response.data;
-        console.log(this.seller);
-      }
-    }, (response) => {
-      // error callback 失败回调
-      console.log('请求失败!!!');
-    });
+    this.$http
+      .get("/api/seller")
+      .then(response => {
+        response = response.body; // 返回object
+        if (response.errno === ERR_OK) {
+          this.seller = response.data;
+          // console.log(this.seller);
+        }
+      })
+      .catch(error => {
+        console.log("请求失败!!!");
+      });
   },
   components: {
-    'v-header': header
+    "v-header": header
   }
 };
 </script>
 
-<style lang="stylus" rel="stylesheet/stylus">
-  @import "./common/stylus/base.styl";
-  @import "./common/stylus/mixin.styl";
+<style lang="scss" scoped>
+@import "./common/style/mixin.scss";
 
-    .tab
-      display: flex
-      width: 100%
-      height: 40px
-      line-height: 40px
-      border-1px(rgba(7,17,27,0.1))
-      .tab_item
-        flex: 1
-        text-align: center
-        & > a
-          display:block
-          font-size: 14px
-          color: rgb(77, 85, 93)
-          &.active
-            color: rgb(240, 20, 20)
+#app {
+  .tab {
+    display: flex;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    @include border-1px(rgba(7,17,27,0.1));
+    .tab-item {
+      flex: 1;
+      text-align: center;
+      & > a {
+        display: block;
+        font-size: 14px;
+        color: rgb(77, 85, 93);
+        &.active {
+          color: rgb(240, 20, 20);
+        }
+      }
+    }
+  }
+}
 </style>
