@@ -1,45 +1,45 @@
-# 前言
+# 基于Vue2.0 + vue-router + webpack + ES6/7 + nodejs + express 实现外卖APP
 
-初学[vuejs](https://vuejs.org/)的小白（WuChenDi）
+[vuejs](https://vuejs.org/)初学（WuChenDi）
 
-自己利用业余时间来做，由于视频是1.0的版本，有很多东西需要转换成2.0，现在很多东西只是单单实现功能，以后再慢慢优化，并增加详细的注释。
-项目从零布局到现在完成header组件。
-
-另外，项目参考了[Vue官网](https://vuejs.org/), elm视频和[bailicangdu](https://github.com/bailicangdu/vue2-elm)
-
-
-__注：此项目纯属个人瞎搞，正常下单请选择饿了么官方客户端。__
+- 自己利用业余时间来做，项目从零布局到现在完成header组件、goods组件。
+- 如有问题或者您发现问题并有非常好的解决方案请直接在 Issues 中提或 (qq:996194720)。
+- Welcome 
 
 ### 项目技术架构
 ***
-* flex布局、Sticky footers布局
-*  vue-cli
-*  vue
-*  vue-resource
-*  vue-router
-*  vue-infinite-scroll
-*  stylus
-*  webpack
+- 页面结构(H5,CSS3,原生JS)
+- 页面布局(flex布局、Sticky footers布局)
+- 框架(基于Vue脚手架:vue-cli)进行搭建
+- 数据请求处理框架(vue-resource或者Axios)
+- Vue-Router进行路由处理
+- 使用json-server模拟REST API(目前项目使用express)
 
 ## 项目运行
 
-通过npm安装本地服务第三方依赖模块(需要已安装Node.js)
+通过npm安装本地服务第三方依赖模块(需要已安装[Node.js](https://nodejs.org/en/))
 
-#### 注意：node的版本(安装稳定版本，推荐8.14，当时我自己开发版本是8.2.1)
+```
+cd vue-elm
 
-``` bash
-# install dependencies
 npm install 或 cnpm install(个人比较喜欢使用后者，下载依赖模块速度较快)
 
-# serve with hot reload at localhost:8080
 npm run dev
 
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
 ```
+
+## 总结
+- 了解页面布局(flex布局、Sticky footers布局)
+- 了解vue - 数据渲染、前端模块化、路由
+- 熟悉VueJs的接口功能 - 指令的用法、选项的用法
+- 了解vue组件 - 组件的交互
+- 了解vue工程化方案 - 单文件组件Webpack测试数据
+- vue项目的搭建流程
+- 使用Ajax请求后端数据
+- 组件的设计与交互
+- 路由和子路由(嵌套路由通信)
+
+## 项目效果图
 
 # 说明
 
