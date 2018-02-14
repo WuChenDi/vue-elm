@@ -1,6 +1,6 @@
 # 基于Vue2.0 + vue-router + webpack + ES6/7 + nodejs + express 实现外卖APP
 
-[vuejs](https://vuejs.org/)初学（WuChenDi）
+[vuejs](https://vuejs.org/)初学（WuChenDi.）
 
 - 自己利用业余时间来做，项目从零布局到现在完成header组件、goods组件。
 - 如有问题或您发现问题并有非常好的解决方案请直接 Issues 或 qq:996194720
