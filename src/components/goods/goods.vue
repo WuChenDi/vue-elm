@@ -2,7 +2,7 @@
   <div class="goods">
     <div class="menu-wrapper" ref="menuWrapper">
       <ul>
-        <li class="menu-item" v-for="(item,index) in goods" :class="{'current':currentIndex === index}">
+        <li class="menu-item" v-for="(item,index) in goods" :class="{'current':currentIndex === index}" @click="selectMenu(index,$event)">
           <span class="text" border-1px>
             <span class="icon" v-show="item.type > 0" :class="classMap[item.type]"></span>
             {{item.name}}
@@ -36,12 +36,13 @@
         </li>
       </ul>
     </div>
+    <shopcart :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"></shopcart>
   </div>
-
 </template>
 
 <script>
 import BScroll from "better-scroll";
+import shopcart from "../shopcart/shopcart";
 
 const ERR_OK = 0;
 
@@ -96,6 +97,18 @@ export default {
       });
   },
   methods: {
+    // 点击
+    selectMenu(index, event) {
+      // 去掉自带的click事件点击，即pc端直接返回
+      // if (!event._constructed) {
+      //   return;
+      // }
+      let foodList = this.$refs.foodsWrapper.querySelectorAll(
+        ".food-list-hook"
+      );
+      let el = foodList[index]; // 获得当前监听元素的高度
+      this.foodsScroll.scrollToElement(el, 300); //类似jump to的功能,通过这个方法,跳转到指定的dom
+    },
     // 滚动
     _initScroll() {
       // let meunScroll = document.querySelector(".menu-wrapper");
@@ -119,10 +132,11 @@ export default {
       // 结合BScroll的接口使用,监听scroll事件(实时派发的),并获取鼠标坐标，当滚动时能实时暴露出scroll
       this.foodsScroll.on("scroll", pos => {
         this.scrollY = Math.abs(Math.round(pos.y));
-        // console.log(Math.abs(Math.round(pos.y)));
       });
     },
     // 计算高度
+    // 通过 方法 计算foods内部每一个块的高度,组成一个数组listHeight。
+    // 每个li 定义一个类food-list-hook  通过获取该类 来计算 每一块的高度 存到数组listHeight里
     _calculateHeight() {
       // let foodList = document.querySelector(".food-list-hook");
       let foodList = this.$refs.foodsWrapper.getElementsByClassName(
@@ -136,6 +150,9 @@ export default {
         this.listHeight.push(height);
       }
     }
+  },
+  components: {
+    shopcart
   }
 };
 </script>
