@@ -17,12 +17,10 @@
 
 <script>
 export default {
-  props:{
-    selefoodsArr:{
-      type:Array,
-      default(){
-        return []
-      }
+  props: {
+    deliveryPrice: {
+      type: Number,
+      default: 0
     }
   }
 };
@@ -42,7 +40,7 @@ export default {
     font-size: 0;
     .content-left {
       flex: 1;
-      .logo-wrapper{
+      .logo-wrapper {
         display: inline-block;
         position: relative;
         top: -10px;
@@ -54,38 +52,38 @@ export default {
         vertical-align: top;
         border-radius: 50%;
         background: #141d27;
-        .logo{
+        .logo {
           width: 100%;
           height: 100%;
           border-radius: 50%;
           background: #2b343c;
           text-align: center;
-          .icon-shopping_cart{
+          .icon-shopping_cart {
             line-height: 44px;
             font-size: 24px;
             color: #80858a;
           }
         }
       }
-      .price{
+      .price {
         display: inline-block;
         vertical-align: top;
         line-height: 24px;
         margin-top: 12px;
         padding-right: 12px;
         box-sizing: border-box;
-        border-right: 1px solid rgba(255,255,255,0.1);
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
         font-size: 16px;
         font-weight: 700;
-        color: rgba(255,255,255,0.4);
+        color: rgba(255, 255, 255, 0.4);
       }
-      .desc{
+      .desc {
         display: inline-block;
         vertical-align: top;
         line-height: 24px;
         margin: 12px 0 0 12px;
         font-size: 16px;
-        color: rgba(255,255,255,0.4);
+        color: rgba(255, 255, 255, 0.4);
         font-size: 10px;
       }
     }
