@@ -8,7 +8,7 @@
           </div>
         </div>
         <div class="price">￥0</div>
-        <div class="desc">另需配送费￥{{deliverPrice}}元</div>
+        <div class="desc">另需配送费￥{{deliveryPrice}}元</div>
       </div>
       <div class="content-right"></div>
     </div>
@@ -16,7 +16,16 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props:{
+    selefoodsArr:{
+      type:Array,
+      default(){
+        return []
+      }
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
