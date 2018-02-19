@@ -3,8 +3,8 @@
     <div class="content">
       <div class="content-left">
         <div class="logo-wrapper">
-          <div class="logo">
-            <i class="icon-shopping_cart"></i>
+          <div class="logo" :class="{'highlight':totalCount>0}">
+            <i class="icon-shopping_cart" :class="{'highlight':totalCount>0}"></i>
           </div>
           <div class="num">{{totalCount}}</div>
         </div>
@@ -51,9 +51,9 @@ export default {
       });
       return total;
     },
-    totalCount(){
+    totalCount() {
       let count = 0;
-      this.selectFoods.forEach((food)=>{
+      this.selectFoods.forEach(food => {
         count += food.count;
       });
       return count;
@@ -94,13 +94,19 @@ export default {
           border-radius: 50%;
           background: #2b343c;
           text-align: center;
+          &.highlight {
+            background: rgb(0, 160, 220);
+          }
           .icon-shopping_cart {
             line-height: 44px;
             font-size: 24px;
             color: #80858a;
+            &.highlight {
+              color: #fff;
+            }
           }
         }
-        .num{
+        .num {
           position: absolute;
           top: 0;
           right: 0;
@@ -112,8 +118,8 @@ export default {
           font-size: 9px;
           font-weight: 700;
           color: #fff;
-          background: rgb(240,20,20);
-          box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
+          background: rgb(240, 20, 20);
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
         }
       }
       .price {
