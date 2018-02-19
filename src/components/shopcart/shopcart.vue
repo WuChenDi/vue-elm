@@ -10,7 +10,11 @@
         <div class="price">￥0</div>
         <div class="desc">另需配送费￥{{deliveryPrice}}元</div>
       </div>
-      <div class="content-right"></div>
+      <div class="content-right">
+        <div class="pay">
+          ￥{{minPrice}}元起送
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -19,6 +23,10 @@
 export default {
   props: {
     deliveryPrice: {
+      type: Number,
+      default: 0
+    },
+    minPrice: {
       type: Number,
       default: 0
     }
