@@ -104,6 +104,7 @@ export default {
         text-align: center;
         font-size: 12px;
         color: rgba(255, 255, 255, 0.4);
+        font-weight: 700;
       }
     }
   }
