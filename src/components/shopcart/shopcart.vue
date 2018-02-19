@@ -6,6 +6,7 @@
           <div class="logo">
             <i class="icon-shopping_cart"></i>
           </div>
+          <div class="num">{{totalCount}}</div>
         </div>
         <div class="price">￥{{totalPrice}}</div>
         <div class="desc">另需配送费￥{{deliveryPrice}}元</div>
@@ -25,7 +26,12 @@ export default {
     selectFoods: {
       type: Array,
       default() {
-        return [];
+        return [
+          {
+            price: 10,
+            count: 1
+          }
+        ];
       }
     },
     deliveryPrice: {
@@ -44,6 +50,13 @@ export default {
         total += food.price * food.count;
       });
       return total;
+    },
+    totalCount(){
+      let count = 0;
+      this.selectFoods.forEach((food)=>{
+        count += food.count;
+      });
+      return count;
     }
   }
 };
@@ -86,6 +99,21 @@ export default {
             font-size: 24px;
             color: #80858a;
           }
+        }
+        .num{
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 24px;
+          height: 16px;
+          line-height: 16px;
+          text-align: center;
+          border-radius: 16px;
+          font-size: 9px;
+          font-weight: 700;
+          color: #fff;
+          background: rgb(240,20,20);
+          box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
         }
       }
       .price {
