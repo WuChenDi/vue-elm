@@ -105,6 +105,7 @@ export default {
         font-size: 12px;
         color: rgba(255, 255, 255, 0.4);
         font-weight: 700;
+        background: #2b333b;
       }
     }
   }
