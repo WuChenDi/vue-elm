@@ -22,6 +22,12 @@
 <script>
 export default {
   props: {
+    selectFoods: {
+      type: Array,
+      default() {
+        return [];
+      }
+    },
     deliveryPrice: {
       type: Number,
       default: 0
