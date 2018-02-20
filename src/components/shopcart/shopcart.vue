@@ -13,7 +13,7 @@
       </div>
       <div class="content-right">
         <div class="pay">
-          ￥{{minPrice}}元起送
+          {{payDesc}}
         </div>
       </div>
     </div>
@@ -57,6 +57,16 @@ export default {
         count += food.count;
       });
       return count;
+    },
+    payDesc() {
+      if (this.totalPrice === 0) {
+        return `￥${this.minPrice}元起送`;
+      } else if (this.totalPrice < this.minPrice) {
+        let diff = this.minPrice - this.totalPrice;
+        return `还差￥${diff}元起送`;
+      } else {
+        return "去结算";
+      }
     }
   }
 };
@@ -133,7 +143,7 @@ export default {
         font-size: 16px;
         font-weight: 700;
         color: rgba(255, 255, 255, 0.4);
-        &.highlight{
+        &.highlight {
           color: #fff;
         }
       }
