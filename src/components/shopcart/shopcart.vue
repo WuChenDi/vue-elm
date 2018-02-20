@@ -8,7 +8,7 @@
           </div>
           <div class="num">{{totalCount}}</div>
         </div>
-        <div class="price">￥{{totalPrice}}</div>
+        <div class="price" :class="{'highlight':totalCount>0}">￥{{totalPrice}}</div>
         <div class="desc">另需配送费￥{{deliveryPrice}}元</div>
       </div>
       <div class="content-right">
@@ -133,6 +133,9 @@ export default {
         font-size: 16px;
         font-weight: 700;
         color: rgba(255, 255, 255, 0.4);
+        &.highlight{
+          color: #fff;
+        }
       }
       .desc {
         display: inline-block;
