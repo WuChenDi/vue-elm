@@ -13,12 +13,23 @@ export default {
       type: Object
     }
   },
-  created () {
+  created() {
     console.log(this.food);
   }
 };
 </script>
 
 <style lang="scss" scoped>
-
+.cartcontrol {
+  font-size: 0;
+  .cart-decrease {
+    display: inline-block;
+  }
+  .cart-count {
+    display: inline-block;
+  }
+  .cart-add {
+    display: inline-block;
+  }
+}
 </style>
