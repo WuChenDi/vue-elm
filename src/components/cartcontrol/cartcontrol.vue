@@ -12,6 +12,9 @@ export default {
     food: {
       type: Object
     }
+  },
+  created () {
+    console.log(this.food);
   }
 };
 </script>
