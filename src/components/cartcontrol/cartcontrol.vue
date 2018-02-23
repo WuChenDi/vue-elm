@@ -13,9 +13,6 @@ export default {
       type: Object
     }
   },
-  created() {
-    console.log(this.food);
-  },
   methods: {
     addCart() {
       if (!this.food.count) {
