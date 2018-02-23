@@ -24,9 +24,9 @@ export default {
   font-size: 0;
   .cart-decrease, .cart-add {
     display: inline-block;
+    padding: 6px;
     line-height: 24px;
     font-size: 24px;
-    padding: 6px;
   }
   .cart-count {
     display: inline-block;
