@@ -22,8 +22,10 @@ export default {
 <style lang="scss" scoped>
 .cartcontrol {
   font-size: 0;
-  .cart-decrease {
+  .cart-decrease, .cart-add {
     display: inline-block;
+    line-height: 24px;
+    font-size: 24px;
     padding: 6px;
   }
   .cart-count {
@@ -31,6 +33,7 @@ export default {
   }
   .cart-add {
     display: inline-block;
+
   }
 }
 </style>
