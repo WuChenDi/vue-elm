@@ -14,7 +14,12 @@ export default {
     }
   },
   methods: {
-    addCart() {
+    addCart(event) {
+      console.log(123);
+      // 去掉自带的click事件点击，即pc端直接返回
+      // if (!event._constructed) {
+      //   return;
+      // }
       if (!this.food.count) {
         this.food.count = 1;
       } else {
