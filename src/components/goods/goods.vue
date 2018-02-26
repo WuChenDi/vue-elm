@@ -31,7 +31,7 @@
                   <span class="old" v-show="food.oldPrice">￥{{food.oldPrice}}</span>
                 </div>
                 <div class="cartcontrol-wrapper">
-                  <cartcontrol :food="food"></cartcontrol>
+                  <cartcontrol :food="food" @add="addFood"></cartcontrol>
                 </div>
               </div>
             </li>
@@ -39,14 +39,14 @@
         </li>
       </ul>
     </div>
-    <shopcart :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"></shopcart>
+    <shopcart ref="shopcart" :select-foods="selectFoods" :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"></shopcart>
   </div>
 </template>
 
 <script>
 import BScroll from "better-scroll";
 import shopcart from "../shopcart/shopcart";
-import cartcontrol from '../cartcontrol/cartcontrol';
+import cartcontrol from "../cartControl/cartControl";
 
 const ERR_OK = 0;
 
@@ -76,6 +76,17 @@ export default {
         }
       }
       return 0;
+    },
+    selectFoods() {
+      let foods = [];
+      this.goods.forEach(good => {
+        good.foods.forEach(food => {
+          if (food.count) {
+            foods.push(food);
+          }
+        });
+      });
+      return foods;
     }
   },
   created() {
@@ -153,11 +164,24 @@ export default {
         height += item.clientHeight; // 主要是为了获取每一个foods内部块的高度
         this.listHeight.push(height);
       }
+    },
+    addFood(target) {
+      this._drop(target);
+    },
+    _drop(target) {
+      this.$nextTick(() => {
+        this.$refs.shopcart.balldrop(target);
+      });
     }
   },
   components: {
     shopcart,
     cartcontrol
+  },
+  event: {
+    "cart.add"(target) {
+      this._drop(target);
+    }
   }
 };
 </script>
@@ -288,7 +312,7 @@ export default {
             color: rgb(147, 153, 159);
           }
         }
-        .cartcontrol-wrapper{
+        .cartcontrol-wrapper {
           position: absolute;
           right: 0;
           bottom: 12px;
