@@ -17,6 +17,15 @@
         </div>
       </div>
     </div>
+    <div class="ball-container">
+      <div v-for="ball in balls">
+        <transition name="drop">
+          <div class="ball" v-show="ball.show">
+            <div class="inner inner_hook"></div>
+          </div>
+        </transition>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -26,12 +35,7 @@ export default {
     selectFoods: {
       type: Array,
       default() {
-        return [
-          {
-            price: 10,
-            count: 1
-          }
-        ];
+        return [];
       }
     },
     deliveryPrice: {
@@ -42,6 +46,30 @@ export default {
       type: Number,
       default: 0
     }
+  },
+  data() {
+    return {
+      //  定义一个数组 来 控制小球的状态   定义多个对象，表示页面中做多同时运动的小球
+      balls: [
+        {
+          show: false
+        },
+        {
+          show: false
+        },
+        {
+          show: false
+        },
+        {
+          show: false
+        },
+        {
+          show: false
+        }
+      ],
+      //  接收下落小球
+      dropBalls: []
+    };
   },
   computed: {
     totalPrice() {
@@ -74,6 +102,40 @@ export default {
       } else {
         return "enough";
       }
+    }
+  },
+  methods: {
+    balldrop(ele) {
+      console.log(ele);
+      for (let i = 0; i < this.balls.length; i++) {
+        let ball = this.balls[i];
+        if (!ball.show) {
+          ball.show = true;
+          ball.ele = ele;
+          this.dropBalls.push(ball);
+          return;
+        }
+      }
+    }
+  },
+  transitions: {
+    drop: {
+      beforeEnter(el) {
+        let count = this.balls.length;
+        while(count--){
+          let ball = this.balls[count];
+          if (ball.show) {
+            let rect = ball.el.getBoundingClientRect();
+            let x = rect.left - 32;
+            let y = -(window.innerHeight - rect.top - 22);
+            el.style.display = '';
+            el.style.webkitTransform  = `translate3d(0,${y}px,0)`;
+            el.style.transform = `translate3d(0,${y}px,0)`;
+          }
+        }
+      },
+      enter(el) {},
+      afterEnter(el) {}
     }
   }
 };
@@ -181,6 +243,36 @@ export default {
         &.enough {
           background: #00b43c;
           color: #fff;
+        }
+      }
+    }
+  }
+  .ball-container {
+    .ball {
+      position: fixed;
+      left: 32px;
+      bottom: 22px;
+      z-index: 200;
+      // &.drop-enter,
+      // &.drop-enter-active {
+      //   transition: all 0.4s cubic-bezier(0.49, -0.29, 0.75, 0.41);
+      //   .inner{
+      //     width: 16px;
+      //     height: 16px;
+      //     border-radius: 50%;
+      //     background: rgb(0,160,220);
+      //     transition: all 0.4s linear;
+      //   }
+      // }
+      &.drop-enter,
+      &.drop-enter-active {
+        transition: all 0.4s cubic-bezier(0.49, -0.29, 0.75, 0.41);
+        .inner {
+          width: 16px;
+          height: 16px;
+          border-radius: 50%;
+          background: rgb(0, 160, 220);
+          transition: all 0.4s;
         }
       }
     }
