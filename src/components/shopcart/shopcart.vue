@@ -19,9 +19,9 @@
     </div>
     <div class="ball-container">
       <div v-for="ball in balls">
-        <transition name="drop">
+        <transition name="drop" @before-enter="beforeEnter" @enter="enter" @after-enter="afterEnter">
           <div class="ball" v-show="ball.show">
-            <div class="inner inner_hook"></div>
+            <div class="inner inner-hook"></div>
           </div>
         </transition>
       </div>
@@ -106,6 +106,7 @@ export default {
   },
   methods: {
     balldrop(ele) {
+      // 取到点击对象ele
       console.log(ele);
       for (let i = 0; i < this.balls.length; i++) {
         let ball = this.balls[i];
@@ -116,28 +117,96 @@ export default {
           return;
         }
       }
+    },
+    beforeEnter(el) {
+      // 找到设为true的小球
+      let count = this.balls.length;
+      while (count--) {
+        let ball = this.balls[count];
+        if (ball.show) {
+          // 返回元素相对于视口偏移的位置
+          let rect = ball.el.getBoundingClientRect();
+          // 点击的按钮与小球（fixed）之间x方向的差值
+          let x = rect.left - 32;
+          let y = -(window.innerHeight - rect.top - 22);
+          // 设置初始位置前，手动置空，覆盖之前的display：none，使其显示
+          el.style.display = "";
+          // 外层元素做纵向的动画，y是变量
+          el.style.webkitTransform = `translate3d(0,${y}px,0)`;
+          el.style.transform = `translate3d(0,${y}px,0)`;
+          let inner = el.getElementsByClassName("inner-hook")[0];
+          inner.style.webkitTransform = `translate3d(${x}px,0,0)`;
+          inner.style.transform = `translate3d(${x}px,0,0)`;
+        }
+      }
+    },
+    enter(el) {
+      /* eslint-disable no-unused-vars */
+      let rf = el.offsetHeight;
+      this.$nextTick(() => {
+        // 重置
+        el.style.webkitTransform = "translate3d(0,0,0)";
+        el.style.transform = "translate3d(0,0,0)";
+        let inner = el.getElementsByClassName("inner-hook")[0];
+        inner.style.webkitTransform = "translate3d(0,0,0)";
+        inner.style.transform = "translate3d(0,0,0)";
+      });
+    },
+    afterEnter(el) {
+      //  取到做完动画的球，再置为false，即重置，它还可以接着被利用
+      let ball = this.dropBalls.shift();
+      if (ball) {
+        ball.show = false;
+        el.style.display = "none";
+      }
     }
-  },
-  transitions: {
+  }
+  /*transitions: {
     drop: {
       beforeEnter(el) {
+        // 找到设为true的小球
         let count = this.balls.length;
-        while(count--){
+        while (count--) {
           let ball = this.balls[count];
           if (ball.show) {
+            // 返回元素相对于视口偏移的位置
             let rect = ball.el.getBoundingClientRect();
+            // 点击的按钮与小球（fixed）之间x方向的差值
             let x = rect.left - 32;
             let y = -(window.innerHeight - rect.top - 22);
-            el.style.display = '';
-            el.style.webkitTransform  = `translate3d(0,${y}px,0)`;
+            // 设置初始位置前，手动置空，覆盖之前的display：none，使其显示
+            el.style.display = "";
+            // 外层元素做纵向的动画，y是变量
+            el.style.webkitTransform = `translate3d(0,${y}px,0)`;
             el.style.transform = `translate3d(0,${y}px,0)`;
+            let inner = el.getElementsByClassName("inner-hook")[0];
+            inner.style.webkitTransform = `translate3d(${x}px,0,0)`;
+            inner.style.transform = `translate3d(${x}px,0,0)`;
           }
         }
       },
-      enter(el) {},
-      afterEnter(el) {}
+      enter(el) {
+        // eslint-disable no-unused-vars 
+        let rf = el.offsetHeight;
+        this.$nextTick(() => {
+          // 重置
+          el.style.webkitTransform = "translate3d(0,0,0)";
+          el.style.transform = "translate3d(0,0,0)";
+          let inner = el.getElementsByClassName("inner-hook")[0];
+          inner.style.webkitTransform = "translate3d(0,0,0)";
+          inner.style.transform = "translate3d(0,0,0)";
+        });
+      },
+      afterEnter(el) {
+        //  取到做完动画的球，再置为false，即重置，它还可以接着被利用
+        let ball = this.dropBalls.shift();
+        if (ball) {
+          ball.show = false;
+          el.style.display = "none";
+        }
+      }
     }
-  }
+  }*/
 };
 </script>
 
@@ -253,17 +322,6 @@ export default {
       left: 32px;
       bottom: 22px;
       z-index: 200;
-      // &.drop-enter,
-      // &.drop-enter-active {
-      //   transition: all 0.4s cubic-bezier(0.49, -0.29, 0.75, 0.41);
-      //   .inner{
-      //     width: 16px;
-      //     height: 16px;
-      //     border-radius: 50%;
-      //     background: rgb(0,160,220);
-      //     transition: all 0.4s linear;
-      //   }
-      // }
       &.drop-enter,
       &.drop-enter-active {
         transition: all 0.4s cubic-bezier(0.49, -0.29, 0.75, 0.41);
@@ -272,7 +330,7 @@ export default {
           height: 16px;
           border-radius: 50%;
           background: rgb(0, 160, 220);
-          transition: all 0.4s;
+          transition: all 0.4s linear;
         }
       }
     }
