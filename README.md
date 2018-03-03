@@ -4,7 +4,7 @@
 
 - 自己利用业余时间来做，项目从零布局到现在完成组件有：header - goods - shopcart - cartcontrol
 - 如有问题或者您发现问题并有非常好的解决方案请直接在 Issues 中提或 (qq:996194720)。
-- Welcome 
+- Welcome to
 
 ### 项目技术架构
 ***
