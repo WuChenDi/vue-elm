@@ -18,7 +18,7 @@
       </div>
     </div>
     <div class="ball-container">
-      <div v-for="ball in balls">
+      <div v-for="ball in balls" v-show="ball.show">
         <transition name="drop" @before-enter="beforeEnter" @enter="enter" @after-enter="afterEnter">
           <div class="ball" v-show="ball.show">
             <div class="inner inner-hook"></div>
